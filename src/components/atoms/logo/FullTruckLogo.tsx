@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box'
-import { FC } from 'react'
+import Box from '@mui/material/Box';
+import { FC } from 'react';
 
 type Props = {
   onClick?: () => void
@@ -20,7 +20,7 @@ const FullTruckLogo: FC<Props> = ({ onClick }) => {
       src={'./logo.png'}
       onClick={onClick}
     />
-  )
-}
+  );
+};
 
-export default FullTruckLogo
+export default FullTruckLogo;
