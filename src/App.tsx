@@ -1,9 +1,8 @@
+import { ShowDataPage } from "@pages/showData/ShowDataPage";
 import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
 import WelcomePage from "./components/pages/welcome/WelcomePage";
 import { Routes } from "./shared/routes/routes";
-import { MyComponent } from "@pages/welcome/Sample";
 
 const router = createBrowserRouter([
   {
@@ -12,12 +11,16 @@ const router = createBrowserRouter([
   },
   {
     path: Routes.data,
-    element: <MyComponent />,
+    element: <ShowDataPage />,
   },
 ]);
 
 const App: FC = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="px-6 py-6">
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default App;

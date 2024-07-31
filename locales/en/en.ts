@@ -1,3 +1,17 @@
 export default {
-  go: 'Go',
+  go: "Go",
+  active_carrier: "Active carriers",
+  active_client: "Active clients",
+  aggregate_date: "Aggregation date",
+  assigned_count: "Assigned order count",
+  order_count: "Total order count",
+  margin_abs: "Absolute margin",
+  margin_abs_per_order: "Absolute margin per order",
+  margin_perc: "Margin percentage",
+  revenue: "Total revenue",
+  revenue_assigned: "Revenue from assigned orders",
+  revenue_per_order: "Revenue per order",
+  new_carriers: "New carriers",
+  new_clients: "New customers",
+  order_per_period: "Orders per period",
 };

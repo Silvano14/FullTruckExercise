@@ -1,13 +1,4 @@
 import FullTruckLogo from "@atoms/logo/FullTruckLogo";
-import {
-  Box,
-  Container,
-  Divider,
-  List,
-  ListItem,
-  Stack,
-  Typography,
-} from "@mui/material";
 import { Routes } from "@shared/routes/routes";
 
 import { FC } from "react";
@@ -18,9 +9,8 @@ const WelcomePage: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Container>
-      <Stack spacing={2}>
-        <Box justifyContent={"center"} alignItems="center">
+    <div>
+      {/* <Box justifyContent={"center"} alignItems="center">
           <FullTruckLogo />
         </Box>
         <Divider />
@@ -46,10 +36,9 @@ const WelcomePage: FC = () => {
           <ListItem sx={{ display: "list-item" }}>
             Complete the coding challenge according to the instructions provided
           </ListItem>
-        </List>
-        <Link to={Routes.data}>{t("go")}</Link>
-      </Stack>
-    </Container>
+        </List> */}
+      <Link to={Routes.data}>{t("go")}</Link>
+    </div>
   );
 };
 
