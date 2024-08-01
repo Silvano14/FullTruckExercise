@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import json1 from "./json1.json";
 import json2 from "./json2.json";
 
@@ -15,8 +15,10 @@ type Props = {
  */
 const useStatistics = (): {
   fetchStatistics: (obj: Props) => Promise<object>;
+  isFetched: boolean;
 } => {
   const toggleRef = useRef(false);
+  const [isFetched, setIsFetched] = useState(false);
 
   /**
    * Fetches statistics data based on the provided props.
@@ -26,16 +28,18 @@ const useStatistics = (): {
    */
 
   const fetchStatistics = (_: Props): Promise<object> => {
+    setIsFetched(false);
     toggleRef.current = !toggleRef.current;
     return new Promise((resolve) => {
       const delay = Math.random() * 3000 + 500;
       setTimeout(() => {
         toggleRef.current ? resolve(json1) : resolve(json2);
+        setIsFetched(true);
       }, delay);
     });
   };
 
-  return { fetchStatistics };
+  return useMemo(() => ({ fetchStatistics, isFetched }), [isFetched]);
 };
 
 export default useStatistics;

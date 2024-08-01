@@ -1,3 +1,4 @@
+import { NextUIProvider } from "@nextui-org/react";
 import { ShowDataPage } from "@pages/showData/ShowDataPage";
 import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
 const App: FC = () => {
   return (
     <div className="px-6 py-6">
-      <RouterProvider router={router} />
+      <NextUIProvider>
+        <RouterProvider router={router} />
+      </NextUIProvider>
     </div>
   );
 };

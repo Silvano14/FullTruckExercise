@@ -1,11 +1,15 @@
-type SkeletonCellTableProps = {};
+import { Skeleton } from "@nextui-org/react";
+import { ReactNode } from "react";
 
-export const SkeletonCellTable: React.FC<SkeletonCellTableProps> = ({}) => {
+type SkeletonType = { children: ReactNode; isLoaded: boolean };
+
+export const SkeletonCellTable: React.FC<SkeletonType> = ({
+  children,
+  isLoaded,
+}) => {
   return (
-    <div className="animate-pulse flex space-x-4">
-      <div className="flex-1 space-y-6 py-1">
-        <div className="h-6 bg-slate-700 rounded"></div>
-      </div>
-    </div>
+    <Skeleton className="rounded-lg" isLoaded={isLoaded}>
+      {children}
+    </Skeleton>
   );
 };

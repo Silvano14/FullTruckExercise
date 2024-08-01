@@ -1,3 +1,4 @@
+import { PaginationWrapper } from "@molecules/table/PaginationWrapper";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import {
   ColumnDef,
@@ -20,7 +21,7 @@ interface TableProps<TData> {
   headerComponent?: ReactNode;
 }
 
-export const defaultPageSize = 50;
+export const defaultPageSize = 5;
 
 export const DefaultTable = <TData,>({
   data = [],
@@ -34,7 +35,6 @@ export const DefaultTable = <TData,>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-
   const table = useReactTable<TData>({
     autoResetPageIndex: false,
     data,
@@ -107,6 +107,13 @@ export const DefaultTable = <TData,>({
               </tr>
             ))}
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan={columns.length}>
+                <PaginationWrapper table={table}></PaginationWrapper>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>

@@ -15,12 +15,22 @@ export interface DataTableEntryBase {
   revenue_per_order: number;
 }
 
+type TimeMarginPercType = {
+  data: { date: string; margin_perc: number }[];
+};
+
+type TimeOrderCountType = {
+  data: { date: string; order_count: number }[];
+};
+
+type TimeRevenueType = {
+  data: { date: string; revenue: number; margin_abs: number }[];
+};
+
 export interface HistogramDataEntryBase {
-  date: string;
-  margin_perc?: number;
-  order_count?: number;
-  margin_abs?: number;
-  revenue?: number;
+  time_margin_perc: TimeMarginPercType;
+  time_order_count: TimeOrderCountType;
+  time_revenue: TimeRevenueType;
 }
 
 export interface KPIBase {
