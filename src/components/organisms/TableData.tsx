@@ -1,5 +1,5 @@
 import { DefaultTable } from "@atoms/table/DefaultTable";
-import { SkeletonCellTable } from "@atoms/table/SkeletonCellTable";
+import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
 import { createColumnHelper } from "@tanstack/react-table";
 import { DataContext } from "contexts/context";
 import { DataTableEntryBase } from "models/DataType";
@@ -18,126 +18,126 @@ export const TableData: FC = () => {
     () => [
       columnHelper.accessor("active_carrier", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("active_carrier"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("active_client", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("active_client"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("aggregate_date", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {formatDate(info.getValue(), t)}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("aggregate_date"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("assigned_count", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("assigned_count"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("margin_abs", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("margin_abs"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("margin_abs_per_order", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {formatToTwoDecimalPlaces(info.getValue())}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("margin_abs_per_order"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("margin_perc", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {formatToTwoDecimalPlaces(info.getValue()) + " %"}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("margin_perc"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("new_carriers", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("new_carriers"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("new_clients", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("new_clients"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("order_per_period", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("order_per_period"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("order_count", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue()}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("order_count"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("revenue_assigned", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue() + " €"}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("revenue_assigned"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("revenue_per_order", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {formatToTwoDecimalPlaces(info.getValue()) + " €"}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("revenue_per_order"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("revenue", {
         cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
+          <DefaultSkeleton isLoaded={isFetched}>
             {info.getValue() + " €"}
-          </SkeletonCellTable>
+          </DefaultSkeleton>
         ),
         header: () => t("revenue"),
         filterFn: "includesString",

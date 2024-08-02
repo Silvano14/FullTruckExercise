@@ -1,11 +1,12 @@
 import { Histogram } from "@atoms/graphs/histograms/Histogram";
+import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 export const TimeMarginPercGraph: FC = () => {
-  const { data } = useContext(DataContext);
+  const { data, isFetched } = useContext(DataContext);
   const { t } = useTranslation();
 
   const [date, dataHistogram] = useMemo(
@@ -24,7 +25,9 @@ export const TimeMarginPercGraph: FC = () => {
   return (
     <div>
       <DefaultTitle>{t("time_margin_perc")}</DefaultTitle>
-      <Histogram xAsisLabel={date} data={dataHistogram}></Histogram>
+      <DefaultSkeleton isLoaded={isFetched}>
+        <Histogram xAsisLabel={date} data={dataHistogram}></Histogram>
+      </DefaultSkeleton>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 type SkeletonType = { children: ReactNode; isLoaded: boolean };
 
-export const SkeletonCellTable: React.FC<SkeletonType> = ({
+export const DefaultSkeleton: React.FC<SkeletonType> = ({
   children,
   isLoaded,
 }) => {

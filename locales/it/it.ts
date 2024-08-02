@@ -37,4 +37,5 @@ export default {
   october: "Ottobre",
   november: "Novembre",
   december: "Dicembre",
+  graphsTitle: "Visualizzazione grafica dei dati presenti in histograms",
 };

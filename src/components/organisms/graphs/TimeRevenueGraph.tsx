@@ -1,11 +1,12 @@
 import { HistogramLine } from "@atoms/graphs/histograms/HistogramLine";
+import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 export const TimeRevenueGraph: FC = () => {
-  const { data } = useContext(DataContext);
+  const { data, isFetched } = useContext(DataContext);
   const { t } = useTranslation();
 
   const [xAsisLabel, lineData, revenue] = useMemo(
@@ -25,11 +26,13 @@ export const TimeRevenueGraph: FC = () => {
   return (
     <div>
       <DefaultTitle>{t("time_revenue")}</DefaultTitle>
-      <HistogramLine
-        xAsisLabel={xAsisLabel}
-        lineData={lineData}
-        data={revenue}
-      />
+      <DefaultSkeleton isLoaded={isFetched}>
+        <HistogramLine
+          xAsisLabel={xAsisLabel}
+          lineData={lineData}
+          data={revenue}
+        />
+      </DefaultSkeleton>
     </div>
   );
 };
