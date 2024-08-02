@@ -11,6 +11,7 @@ import { FC, useMemo, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import WelcomePage from "./components/pages/welcome/WelcomePage";
 import { Routes } from "./shared/routes/routes";
+import { KpiPage } from "@pages/kpi/KpiPage";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
     element: (
       <PageTemplate>
         <GraphsPage />
+      </PageTemplate>
+    ),
+  },
+  {
+    path: Routes.kpis,
+    element: (
+      <PageTemplate>
+        <KpiPage />
       </PageTemplate>
     ),
   },

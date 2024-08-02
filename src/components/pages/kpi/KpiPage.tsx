@@ -1,5 +1,8 @@
-import { FC } from "react";
+import { Kpi } from "@organisms/kpi/Kpi";
+import { DataContext } from "contexts/context";
+import { FC, useContext } from "react";
 
 export const KpiPage: FC = () => {
-  return <div>KpiPage</div>;
+  const { data } = useContext(DataContext);
+  return <Kpi data={data} />;
 };

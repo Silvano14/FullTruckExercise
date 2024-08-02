@@ -33,7 +33,11 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
   }, [fetchStatistics, setData, setIsFetched]);
 
   useEffect(() => {
-    if (pathname === Routes.data || pathname === Routes.graphs) {
+    if (
+      pathname === Routes.data ||
+      pathname === Routes.graphs ||
+      pathname === Routes.kpis
+    ) {
       reload();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,7 +68,7 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
             {t("back")}
           </Link>
         ) : (
-          <div/>
+          <div />
         )}
         {pathname !== Routes.homepage && (
           <DefaultButton isLoading={!isFetched} onClick={reload}>
