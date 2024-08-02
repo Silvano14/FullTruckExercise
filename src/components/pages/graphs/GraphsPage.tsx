@@ -1,10 +1,14 @@
-import { Graphs } from "@organisms/graphs/Graphs";
+import { TimeMarginPercGraph } from "@organisms/graphs/TimeMarginPercGraph";
+import { TimeOrderCountGraph } from "@organisms/graphs/TimeOrderCountGraph";
+import { TimeRevenueGraph } from "@organisms/graphs/TimeRevenueGraph";
 import { FC } from "react";
 
 export const GraphsPage: FC = () => {
   return (
     <div>
-      <Graphs></Graphs>
+      <TimeMarginPercGraph></TimeMarginPercGraph>
+      <TimeOrderCountGraph></TimeOrderCountGraph>
+      <TimeRevenueGraph></TimeRevenueGraph>
     </div>
   );
 };

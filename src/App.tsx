@@ -53,7 +53,7 @@ const App: FC = () => {
       <NextThemesProvider attribute="class" defaultTheme="dark">
         <DataContext.Provider value={dataContext}>
           <Header></Header>
-          <Spacer></Spacer>
+          <Spacer y={4}></Spacer>
           <RouterProvider router={router} />
         </DataContext.Provider>
       </NextThemesProvider>

@@ -36,5 +36,3 @@ export const Histogram: FC<HistogramType> = ({
 
   return <ReactEcharts option={options}></ReactEcharts>;
 };
-
-export default Histogram;
