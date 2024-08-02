@@ -1,26 +1,12 @@
-import Box from '@mui/material/Box';
-import { FC } from 'react';
+import { FC } from "react";
+import logo from "/logo.png";
 
 type Props = {
-  onClick?: () => void
-}
+  onClick?: () => void;
+};
 
 const FullTruckLogo: FC<Props> = ({ onClick }) => {
-  return (
-    <Box
-      component="img"
-      sx={{
-        height: 32,
-        width: 260,
-        '&:hover': {
-          cursor: onClick ? 'pointer' : 'default',
-        },
-      }}
-      alt="The FullTruck logo"
-      src={'./logo.png'}
-      onClick={onClick}
-    />
-  );
+  return <img alt="The FullTruck logo" src={logo} onClick={onClick} width={200} />;
 };
 
 export default FullTruckLogo;

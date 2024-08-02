@@ -8,7 +8,7 @@ export const SkeletonCellTable: React.FC<SkeletonType> = ({
   isLoaded,
 }) => {
   return (
-    <Skeleton className="rounded-lg" isLoaded={isLoaded}>
+    <Skeleton className="rounded-lg mx-3" isLoaded={isLoaded}>
       {children}
     </Skeleton>
   );

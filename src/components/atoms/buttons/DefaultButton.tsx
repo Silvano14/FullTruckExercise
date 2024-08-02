@@ -1,20 +1,10 @@
-import { Button } from "@nextui-org/react";
-import { FC, MouseEventHandler, ReactNode } from "react";
+// https://nextui.org/docs/customization/custom-variants
+import { Button, extendVariants } from "@nextui-org/react";
 
-type DefaultButtonProps = {
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  className?: string;
-  children?: ReactNode;
-};
-
-export const DefaultButton: FC<DefaultButtonProps> = ({
-  onClick,
-  className,
-  children,
-}) => {
-  return (
-    <Button onClick={onClick} color="primary" className={` ${className}`}>
-      {children}
-    </Button>
-  );
-};
+export const DefaultButton = extendVariants(Button, {
+  variants: {
+    size: {
+      xs: "min-w-6 h-6",
+    },
+  },
+});

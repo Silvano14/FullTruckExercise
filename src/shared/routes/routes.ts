@@ -1,4 +1,5 @@
 export enum Routes {
-  homepage = '/',
-  data = '/data',
+  homepage = "/",
+  data = "/data",
+  graphs = "/graphs",
 }

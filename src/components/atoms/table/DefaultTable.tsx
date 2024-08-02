@@ -12,13 +12,13 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import React, { ReactNode } from "react";
+import React from "react";
+import { Filter } from "./Filter";
 
 interface TableProps<TData> {
   data?: Array<TData>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: ColumnDef<TData, any>[];
-  headerComponent?: ReactNode;
 }
 
 export const defaultPageSize = 5;
@@ -35,6 +35,7 @@ export const DefaultTable = <TData,>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+
   const table = useReactTable<TData>({
     autoResetPageIndex: false,
     data,
@@ -78,7 +79,9 @@ export const DefaultTable = <TData,>({
                     }[header.column.getIsSorted() as string] ?? null}
                   </div>
                   {header.column.getCanFilter() ? (
-                    <div>{/* <Filter column={header.column} /> */}</div>
+                    <div>
+                      <Filter column={header.column} />
+                    </div>
                   ) : null}
                 </th>
               ))}

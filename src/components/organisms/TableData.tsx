@@ -1,16 +1,16 @@
 import { DefaultButton } from "@atoms/buttons/DefaultButton";
 import { DefaultTable } from "@atoms/table/DefaultTable";
 import { SkeletonCellTable } from "@atoms/table/SkeletonCellTable";
+import { Routes } from "@shared/routes/routes";
 import { createColumnHelper } from "@tanstack/react-table";
+import { DataContext } from "contexts/context";
 import useStatistics from "hook/useStatistics";
 import { DataModelBase, DataTableEntryBase } from "models/DataType";
-import { FC, useCallback, useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useContext, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { formatDate } from "utils/dateFormatter";
 import { formatToTwoDecimalPlaces } from "utils/numberFormatter";
-import initialData from "./initialData";
-import { Link } from "react-router-dom";
-import { Routes } from "@shared/routes/routes";
 
 const columnHelper = createColumnHelper<DataTableEntryBase>();
 
@@ -23,7 +23,7 @@ const payload = {
 export const TableData: FC = () => {
   const { t } = useTranslation();
   const { fetchStatistics, isFetched } = useStatistics();
-  const [data, setData] = useState<DataModelBase>(initialData);
+  const { data, setData } = useContext(DataContext);
 
   const getData = useCallback(
     () => fetchStatistics(payload),
@@ -157,7 +157,7 @@ export const TableData: FC = () => {
       columnHelper.accessor("revenue_per_order", {
         cell: (info) => (
           <SkeletonCellTable isLoaded={isFetched}>
-            {formatToTwoDecimalPlaces(info.getValue()) + " %"}
+            {formatToTwoDecimalPlaces(info.getValue())}
           </SkeletonCellTable>
         ),
         header: () => t("revenue_per_order"),
@@ -172,10 +172,11 @@ export const TableData: FC = () => {
   };
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <Link to={Routes.homepage}>{t("back")}</Link>
         <DefaultButton onClick={reload}>{t("Reload data")}</DefaultButton>
+        <Link to={Routes.graphs}>{t("graph")}</Link>
       </div>
       <DefaultTable columns={columns} data={data?.data_table}></DefaultTable>
     </div>
