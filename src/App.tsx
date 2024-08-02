@@ -1,3 +1,4 @@
+import { PageTemplate } from "@molecules/template/PageTemplate";
 import { NextUIProvider, Spacer } from "@nextui-org/react";
 import { GraphsPage } from "@pages/graphs/GraphsPage";
 import Header from "@pages/header/Header";
@@ -14,22 +15,38 @@ import { Routes } from "./shared/routes/routes";
 const router = createBrowserRouter([
   {
     path: Routes.homepage,
-    element: <WelcomePage />,
+    element: (
+      <PageTemplate>
+        <WelcomePage />
+      </PageTemplate>
+    ),
   },
   {
     path: Routes.data,
-    element: <ShowDataPage />,
+    element: (
+      <PageTemplate>
+        <ShowDataPage />
+      </PageTemplate>
+    ),
   },
   {
     path: Routes.graphs,
-    element: <GraphsPage />,
+    element: (
+      <PageTemplate>
+        <GraphsPage />
+      </PageTemplate>
+    ),
   },
 ]);
 
 const App: FC = () => {
   const [data, setData] = useState<DataModelBase>(initialData);
+  const [isFetched, setIsFetched] = useState(false);
 
-  const dataContext = useMemo(() => ({ data, setData }), [data]);
+  const dataContext = useMemo(
+    () => ({ data, setData, isFetched, setIsFetched }),
+    [data, isFetched]
+  );
 
   return (
     <NextUIProvider>

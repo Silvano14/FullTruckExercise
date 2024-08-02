@@ -1,8 +1,9 @@
 import { useMemo, useRef, useState } from "react";
 import json1 from "./json1.json";
 import json2 from "./json2.json";
+import { DataModelBase } from "models/DataType";
 
-type Props = {
+export type Props = {
   aggregateBy: "day" | "week" | "month";
   timeTarget: "pickup_date" | "created_at";
   startDate: string | null;
@@ -14,11 +15,9 @@ type Props = {
  * @returns An object containing the `fetchStatistics` function.
  */
 const useStatistics = (): {
-  fetchStatistics: (obj: Props) => Promise<object>;
-  isFetched: boolean;
+  fetchStatistics: (obj: Props) => Promise<DataModelBase>;
 } => {
   const toggleRef = useRef(false);
-  const [isFetched, setIsFetched] = useState(false);
 
   /**
    * Fetches statistics data based on the provided props.
@@ -27,19 +26,16 @@ const useStatistics = (): {
    * @returns A promise that resolves to the fetched statistics data.
    */
 
-  const fetchStatistics = (_: Props): Promise<object> => {
-    setIsFetched(false);
+  const fetchStatistics = (_: Props): Promise<DataModelBase> => {
     toggleRef.current = !toggleRef.current;
     return new Promise((resolve) => {
       const delay = Math.random() * 3000 + 500;
       setTimeout(() => {
         toggleRef.current ? resolve(json1) : resolve(json2);
-        setIsFetched(true);
       }, delay);
     });
   };
-
-  return useMemo(() => ({ fetchStatistics, isFetched }), [isFetched]);
+  return { fetchStatistics };
 };
 
 export default useStatistics;

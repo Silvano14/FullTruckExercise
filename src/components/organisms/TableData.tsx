@@ -1,39 +1,18 @@
-import { DefaultButton } from "@atoms/buttons/DefaultButton";
 import { DefaultTable } from "@atoms/table/DefaultTable";
 import { SkeletonCellTable } from "@atoms/table/SkeletonCellTable";
-import { Routes } from "@shared/routes/routes";
 import { createColumnHelper } from "@tanstack/react-table";
 import { DataContext } from "contexts/context";
-import useStatistics from "hook/useStatistics";
-import { DataModelBase, DataTableEntryBase } from "models/DataType";
-import { FC, useCallback, useContext, useEffect, useMemo } from "react";
+import { DataTableEntryBase } from "models/DataType";
+import { FC, useContext, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { formatDate } from "utils/dateFormatter";
 import { formatToTwoDecimalPlaces } from "utils/numberFormatter";
 
 const columnHelper = createColumnHelper<DataTableEntryBase>();
 
-const payload = {
-  aggregateBy: "day" as const,
-  timeTarget: "pickup_date" as const,
-  startDate: "",
-  endDate: "",
-};
 export const TableData: FC = () => {
   const { t } = useTranslation();
-  const { fetchStatistics, isFetched } = useStatistics();
-  const { data, setData } = useContext(DataContext);
-
-  const getData = useCallback(
-    () => fetchStatistics(payload),
-    [fetchStatistics]
-  );
-
-  useEffect(() => {
-    getData().then((res: unknown) => setData(res as DataModelBase));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data, isFetched } = useContext(DataContext);
 
   const columns = useMemo(
     () => [
@@ -167,17 +146,8 @@ export const TableData: FC = () => {
     [isFetched, t]
   );
 
-  const reload = (): void => {
-    getData().then((res: unknown) => setData(res as DataModelBase));
-  };
-
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex justify-between items-center">
-        <Link to={Routes.homepage}>{t("back")}</Link>
-        <DefaultButton onClick={reload}>{t("Reload data")}</DefaultButton>
-        <Link to={Routes.graphs}>{t("graph")}</Link>
-      </div>
       <DefaultTable columns={columns} data={data?.data_table}></DefaultTable>
     </div>
   );

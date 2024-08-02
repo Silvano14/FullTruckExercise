@@ -5,8 +5,8 @@ type Props = {
   onClick?: () => void;
 };
 
-const FullTruckLogo: FC<Props> = ({ onClick }) => {
-  return <img alt="The FullTruck logo" src={logo} onClick={onClick} width={200} />;
+const FullTruckLogo: FC<Props> = () => {
+  return <img alt="The FullTruck logo" src={logo} width={200} />;
 };
 
 export default FullTruckLogo;
