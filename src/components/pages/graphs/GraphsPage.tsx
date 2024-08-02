@@ -7,8 +7,8 @@ export const GraphsPage: FC = () => {
   return (
     <div>
       <TimeMarginPercGraph></TimeMarginPercGraph>
-      <TimeOrderCountGraph></TimeOrderCountGraph>
       <TimeRevenueGraph></TimeRevenueGraph>
+      <TimeOrderCountGraph></TimeOrderCountGraph>
     </div>
   );
 };

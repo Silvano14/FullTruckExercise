@@ -37,7 +37,7 @@ export const TableData: FC = () => {
       columnHelper.accessor("aggregate_date", {
         cell: (info) => (
           <SkeletonCellTable isLoaded={isFetched}>
-            {formatDate(info.getValue())}
+            {formatDate(info.getValue(), t)}
           </SkeletonCellTable>
         ),
         header: () => t("aggregate_date"),
@@ -64,7 +64,7 @@ export const TableData: FC = () => {
       columnHelper.accessor("margin_abs_per_order", {
         cell: (info) => (
           <SkeletonCellTable isLoaded={isFetched}>
-            {formatToTwoDecimalPlaces(info.getValue()) + " %"}
+            {formatToTwoDecimalPlaces(info.getValue())}
           </SkeletonCellTable>
         ),
         header: () => t("margin_abs_per_order"),
@@ -97,15 +97,6 @@ export const TableData: FC = () => {
         header: () => t("new_clients"),
         filterFn: "includesString",
       }),
-      columnHelper.accessor("order_count", {
-        cell: (info) => (
-          <SkeletonCellTable isLoaded={isFetched}>
-            {info.getValue()}
-          </SkeletonCellTable>
-        ),
-        header: () => t("order_count"),
-        filterFn: "includesString",
-      }),
       columnHelper.accessor("order_per_period", {
         cell: (info) => (
           <SkeletonCellTable isLoaded={isFetched}>
@@ -115,19 +106,19 @@ export const TableData: FC = () => {
         header: () => t("order_per_period"),
         filterFn: "includesString",
       }),
-      columnHelper.accessor("revenue", {
+      columnHelper.accessor("order_count", {
         cell: (info) => (
           <SkeletonCellTable isLoaded={isFetched}>
             {info.getValue()}
           </SkeletonCellTable>
         ),
-        header: () => t("revenue"),
+        header: () => t("order_count"),
         filterFn: "includesString",
       }),
       columnHelper.accessor("revenue_assigned", {
         cell: (info) => (
           <SkeletonCellTable isLoaded={isFetched}>
-            {info.getValue()}
+            {info.getValue() + " €"}
           </SkeletonCellTable>
         ),
         header: () => t("revenue_assigned"),
@@ -136,10 +127,19 @@ export const TableData: FC = () => {
       columnHelper.accessor("revenue_per_order", {
         cell: (info) => (
           <SkeletonCellTable isLoaded={isFetched}>
-            {formatToTwoDecimalPlaces(info.getValue())}
+            {formatToTwoDecimalPlaces(info.getValue()) + " €"}
           </SkeletonCellTable>
         ),
         header: () => t("revenue_per_order"),
+        filterFn: "includesString",
+      }),
+      columnHelper.accessor("revenue", {
+        cell: (info) => (
+          <SkeletonCellTable isLoaded={isFetched}>
+            {info.getValue() + " €"}
+          </SkeletonCellTable>
+        ),
+        header: () => t("revenue"),
         filterFn: "includesString",
       }),
     ],

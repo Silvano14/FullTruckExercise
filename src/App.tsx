@@ -1,7 +1,8 @@
 import { PageTemplate } from "@molecules/template/PageTemplate";
-import { NextUIProvider, Spacer } from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 import { GraphsPage } from "@pages/graphs/GraphsPage";
 import Header from "@pages/header/Header";
+import { KpiPage } from "@pages/kpi/KpiPage";
 import { ShowDataPage } from "@pages/showData/ShowDataPage";
 import initialData from "components/initialDatas/initialData";
 import { DataContext } from "contexts/context";
@@ -11,7 +12,6 @@ import { FC, useMemo, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import WelcomePage from "./components/pages/welcome/WelcomePage";
 import { Routes } from "./shared/routes/routes";
-import { KpiPage } from "@pages/kpi/KpiPage";
 
 const router = createBrowserRouter([
   {

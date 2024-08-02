@@ -8,7 +8,7 @@ import useStatistics from "hook/useStatistics";
 import { DataModelBase } from "models/DataType";
 import { FC, ReactNode, useContext, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type PageTemplateProps = {
   children: ReactNode;

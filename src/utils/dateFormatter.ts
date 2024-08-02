@@ -1,24 +1,28 @@
 const monthNames: string[] = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
 ];
 
 /**
- * Formatta una data ISO stringa in un formato leggibile.
- * @param dateStr La data in formato ISO stringa.
- * @returns La data formattata come stringa.
+ * Formats a date string into a specific date format.
+ * @param dateStr - The date string to format.
+ * @param t - An optional function to transform the month name.
+ * @returns The formatted date string.
  */
-export const formatDate = (dateStr: string): string => {
+export const formatDate = (
+  dateStr: string,
+  t?: (val: string) => string
+): string => {
   if (!dateStr) {
     return "-";
   }
@@ -32,6 +36,10 @@ export const formatDate = (dateStr: string): string => {
   const day = date.getDate();
   const month = monthNames[date.getMonth()];
   const year = date.getFullYear();
+
+  if (t) {
+    return `${day.toString().padStart(2, "0")} ${t(month)} ${year}`;
+  }
 
   return `${day.toString().padStart(2, "0")} ${month} ${year}`;
 };
