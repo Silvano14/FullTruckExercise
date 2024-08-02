@@ -1,43 +1,41 @@
-import FullTruckLogo from "@atoms/logo/FullTruckLogo";
+import DefaultParagraph from "@atoms/text/DefaultParagraph";
+import DefaultTitle from "@atoms/text/DefaultTitle";
 import { Routes } from "@shared/routes/routes";
 
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { Link as NextLink } from "@nextui-org/react";
+import { DefaultButton } from "@atoms/buttons/DefaultButton";
 
 const WelcomePage: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div>
-      {/* <Box justifyContent={"center"} alignItems="center">
-          <FullTruckLogo />
-        </Box>
-        <Divider />
-        <Typography variant="h4" gutterBottom>
-          FullTruck's Coding Challenge
-        </Typography>
-        <Typography variant="body1">
-          Welcome to FullTruck's Coding Challenge!
-        </Typography>
-        <Typography variant="body1">
-          Thank you for accepting our Coding Challenge. In this exercise, we ask
-          you to create a ReactJS dashboard to display a set of statistical
-          data.
-        </Typography>
-        <Typography variant="body1">
-          This project was started with vite and uses react, typescript and mui
-          material-ui. However you are not obliged to follow these choices.
-        </Typography>
-        <List sx={{ px: 10, listStyleType: "disc" }}>
-          <ListItem sx={{ display: "list-item" }}>
-            Take a look at the attached PDF to read the complete instructions
-          </ListItem>
-          <ListItem sx={{ display: "list-item" }}>
-            Complete the coding challenge according to the instructions provided
-          </ListItem>
-        </List> */}
-      <Link to={Routes.data}>{t("go")}</Link>
+    // Pay attention about height of Header, if it's change you have to update this calc
+    <div className="flex flex-col gap-4 h-[calc(100vh-65px)] justify-center items-center">
+      <DefaultTitle className="text-6xl">{t("welcome")}</DefaultTitle>
+      <DefaultParagraph className="text-2xl">
+        {t("explain_scope")}
+      </DefaultParagraph>
+      <DefaultParagraph className="text-2xl">
+        {t("explain_code")}
+      </DefaultParagraph>
+      <NextLink
+        className="text-2xl"
+        target="_blank"
+        href="https://github.com/Silvano14/FullTruckExercise"
+      >
+        {t("here")}
+      </NextLink>
+      <DefaultParagraph className="text-2xl">
+        {t("start_navigation")}
+      </DefaultParagraph>
+      <DefaultButton size="lg">
+        <Link className="text-2xl" to={Routes.data}>
+          {t("start")}
+        </Link>
+      </DefaultButton>
     </div>
   );
 };

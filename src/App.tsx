@@ -16,11 +16,7 @@ import { KpiPage } from "@pages/kpi/KpiPage";
 const router = createBrowserRouter([
   {
     path: Routes.homepage,
-    element: (
-      <PageTemplate>
-        <WelcomePage />
-      </PageTemplate>
-    ),
+    element: <WelcomePage />,
   },
   {
     path: Routes.data,
@@ -62,7 +58,6 @@ const App: FC = () => {
       <NextThemesProvider attribute="class" defaultTheme="dark">
         <DataContext.Provider value={dataContext}>
           <Header></Header>
-          <Spacer y={4}></Spacer>
           <RouterProvider router={router} />
         </DataContext.Provider>
       </NextThemesProvider>
