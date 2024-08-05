@@ -1,5 +1,6 @@
-import { DefaultTable } from "@atoms/table/DefaultTable";
 import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
+import { DefaultTable } from "@atoms/table/DefaultTable";
+import DefaultParagraph from "@atoms/text/DefaultParagraph";
 import { createColumnHelper } from "@tanstack/react-table";
 import { DataContext } from "contexts/context";
 import { DataTableEntryBase } from "models/DataType";
@@ -22,7 +23,11 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("active_carrier"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("active_client", {
@@ -31,7 +36,11 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("active_client"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("aggregate_date", {
@@ -40,7 +49,11 @@ export const TableData: FC = () => {
             {formatDate(info.getValue(), t)}
           </DefaultSkeleton>
         ),
-        header: () => t("aggregate_date"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("assigned_count", {
@@ -49,7 +62,11 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("assigned_count"),
+        header: () => (
+          <DefaultParagraph className="truncate" title={t("assigned_count")}>
+            {t("assigned_count")}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("margin_abs", {
@@ -58,8 +75,13 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("margin_abs"),
-        filterFn: "includesString",
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
+        // filterFn: "includesString",
+        meta: { filterVariant: "range" },
       }),
       columnHelper.accessor("margin_abs_per_order", {
         cell: (info) => (
@@ -67,7 +89,14 @@ export const TableData: FC = () => {
             {formatToTwoDecimalPlaces(info.getValue())}
           </DefaultSkeleton>
         ),
-        header: () => t("margin_abs_per_order"),
+        header: () => (
+          <DefaultParagraph
+            className="truncate"
+            title={t("margin_abs_per_order")}
+          >
+            {t("margin_abs_per_order")}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("margin_perc", {
@@ -76,7 +105,11 @@ export const TableData: FC = () => {
             {formatToTwoDecimalPlaces(info.getValue()) + " %"}
           </DefaultSkeleton>
         ),
-        header: () => t("margin_perc"),
+        header: () => (
+          <DefaultParagraph className="truncate" title={t("margin_perc")}>
+            {t("margin_perc")}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("new_carriers", {
@@ -85,7 +118,11 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("new_carriers"),
+        header: () => (
+          <DefaultParagraph className="truncate" title={t("new_carriers")}>
+            {t("new_carriers")}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("new_clients", {
@@ -94,7 +131,11 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("new_clients"),
+        header: () => (
+          <DefaultParagraph className="truncate" title={t("new_clients")}>
+            {t("new_clients")}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("order_per_period", {
@@ -103,7 +144,11 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("order_per_period"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("order_count", {
@@ -112,7 +157,11 @@ export const TableData: FC = () => {
             {info.getValue()}
           </DefaultSkeleton>
         ),
-        header: () => t("order_count"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("revenue_assigned", {
@@ -121,7 +170,11 @@ export const TableData: FC = () => {
             {info.getValue() + " €"}
           </DefaultSkeleton>
         ),
-        header: () => t("revenue_assigned"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("revenue_per_order", {
@@ -130,7 +183,11 @@ export const TableData: FC = () => {
             {formatToTwoDecimalPlaces(info.getValue()) + " €"}
           </DefaultSkeleton>
         ),
-        header: () => t("revenue_per_order"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
       columnHelper.accessor("revenue", {
@@ -139,7 +196,11 @@ export const TableData: FC = () => {
             {info.getValue() + " €"}
           </DefaultSkeleton>
         ),
-        header: () => t("revenue"),
+        header: (info) => (
+          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+            {t(info.column.id)}
+          </DefaultParagraph>
+        ),
         filterFn: "includesString",
       }),
     ],

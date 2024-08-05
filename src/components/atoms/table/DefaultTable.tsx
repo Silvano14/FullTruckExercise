@@ -1,14 +1,11 @@
-import { PaginationWrapper } from "@molecules/table/PaginationWrapper";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import {
   ColumnDef,
   ColumnFiltersState,
-  PaginationState,
   SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
-  getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -28,10 +25,6 @@ export const DefaultTable = <TData,>({
   columns,
 }: TableProps<TData>): React.JSX.Element => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: defaultPageSize,
-  });
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
@@ -43,14 +36,11 @@ export const DefaultTable = <TData,>({
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    onPaginationChange: setPagination,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     state: {
       columnFilters,
       sorting,
-      pagination,
     },
   });
 
@@ -63,10 +53,10 @@ export const DefaultTable = <TData,>({
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="px-2 py-2 text-center text-sm font-medium text-gray-500 uppercase dark:text-neutral-500"
+                  className="px-2 py-2 text-center text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
                 >
                   <div
-                    className="cursor-pointer flex gap-1 items-center justify-center select-none"
+                    className="cursor-pointer flex pb-2 gap-1 items-center justify-center select-none"
                     onClick={header.column.getToggleSortingHandler()}
                   >
                     {flexRender(
@@ -110,13 +100,6 @@ export const DefaultTable = <TData,>({
               </tr>
             ))}
           </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={columns.length}>
-                <PaginationWrapper table={table}></PaginationWrapper>
-              </td>
-            </tr>
-          </tfoot>
         </table>
       </div>
     </div>
