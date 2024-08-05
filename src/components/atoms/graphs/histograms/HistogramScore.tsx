@@ -1,7 +1,8 @@
 import ReactEcharts from "echarts-for-react";
+import { ParamsLabelFormatter } from "models/graphTypes";
 import { FC, useMemo } from "react";
 
-export type DataRow = [number, number, string];
+type DataRow = [number, number, string];
 
 export type DataArray = [[string, string, string], ...DataRow[]];
 
@@ -15,6 +16,7 @@ export const HistogramScore: FC<HistogramType> = ({ source = [] }) => {
       dataset: {
         source: source,
       },
+      tooltip: {},
       xAxis: { name: "amount" },
       yAxis: { type: "category" },
       visualMap: {
@@ -24,17 +26,24 @@ export const HistogramScore: FC<HistogramType> = ({ source = [] }) => {
         text: ["High Score", "Low Score"],
         dimension: 0,
         inRange: {
-          color: ["#65B581", "#FFCE34", "#FD665F"],
+          color: ["#FD665F", "#FFCE34", "#65B581"],
         },
       },
       series: [
         {
           type: "bar",
           encode: {
-            // Map the "amount" column to X axis.
             x: "amount",
-            // Map the "product" column to Y axis
             y: "product",
+          },
+          label: {
+            show: true,
+            formatter: (val: ParamsLabelFormatter): string => {
+              if (Array.isArray(val.value)) {
+                return val.value[1];
+              }
+              return "-";
+            },
           },
         },
       ],
@@ -42,5 +51,7 @@ export const HistogramScore: FC<HistogramType> = ({ source = [] }) => {
     [source]
   );
 
-  return <ReactEcharts style={{height: "500px"}} option={options}></ReactEcharts>;
+  return (
+    <ReactEcharts option={options}></ReactEcharts>
+  );
 };

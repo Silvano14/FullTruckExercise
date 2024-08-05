@@ -38,4 +38,7 @@ export default {
   november: "Novembre",
   december: "Dicembre",
   graphsTitle: "Visualizzazione grafica dei dati presenti in histograms",
+  time_margin_perc: "Tempo del margine espresso in percentuale",
+  time_order_count: "Conteggio degli ordini temporale",
+  time_revenue: "Ricavo temporale",
 };

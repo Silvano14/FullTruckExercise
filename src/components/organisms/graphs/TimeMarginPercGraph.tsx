@@ -1,5 +1,6 @@
 import { Histogram } from "@atoms/graphs/histograms/Histogram";
-import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
+import { BarChartSkeleton } from "@atoms/skeletons/BarChartSkeleton";
+import { DefaultSkeleton } from "@atoms/skeletons/DefaultSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";
@@ -23,11 +24,15 @@ export const TimeMarginPercGraph: FC = () => {
   );
 
   return (
-    <div>
-      <DefaultTitle>{t("time_margin_perc")}</DefaultTitle>
-      <DefaultSkeleton isLoaded={isFetched}>
+    <>
+      <DefaultTitle className="text-2xl font-bold">
+        {t("time_margin_perc")}
+      </DefaultTitle>
+      {isFetched ? (
         <Histogram xAsisLabel={date} data={dataHistogram}></Histogram>
-      </DefaultSkeleton>
-    </div>
+      ) : (
+        <BarChartSkeleton isLoaded={false}></BarChartSkeleton>
+      )}
+    </>
   );
 };

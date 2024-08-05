@@ -2,7 +2,7 @@ import DefaultParagraph from "@atoms/text/DefaultParagraph";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { Divider } from "@nextui-org/react";
 import { t } from "i18next";
-import { KPIBase } from "models/DataType";
+import { KPIBase } from "models/data/DataType";
 import { FC } from "react";
 import { formatToTwoDecimalPlaces } from "utils/numberFormatter";
 

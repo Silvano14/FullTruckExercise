@@ -1,6 +1,6 @@
-import { DefaultCard } from "@atoms/card/DefaultCard";
+import { DefaultCard } from "@atoms/cards/DefaultCard";
 import DefaultTitle from "@atoms/text/DefaultTitle";
-import { KPIBase } from "models/DataType";
+import { KPIBase } from "models/data/DataType";
 import { FC } from "react";
 import { Margin } from "./Margin";
 import { Order } from "./Order";

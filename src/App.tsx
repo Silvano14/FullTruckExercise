@@ -6,7 +6,7 @@ import { KpiPage } from "@pages/kpi/KpiPage";
 import { ShowDataPage } from "@pages/showData/ShowDataPage";
 import initialData from "components/initialDatas/initialData";
 import { DataContext } from "contexts/context";
-import { DataModelBase } from "models/DataType";
+import { DataModelBase } from "models/data/DataType";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { FC, useMemo, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

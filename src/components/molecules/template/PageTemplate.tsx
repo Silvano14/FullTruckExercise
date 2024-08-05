@@ -1,11 +1,11 @@
 import { DefaultButton } from "@atoms/buttons/DefaultButton";
-import { Spacer } from "@nextui-org/react";
+import { Divider, Spacer } from "@nextui-org/react";
 import { getValuesRoutes, Routes } from "@shared/routes/routes";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { getData } from "components/api/getData";
 import { DataContext } from "contexts/context";
 import useStatistics from "hook/useStatistics";
-import { DataModelBase } from "models/DataType";
+import { DataModelBase } from "models/data/DataType";
 import { FC, ReactNode, useContext, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -93,6 +93,7 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
             {t("forward")}
           </DefaultButton>
         </div>
+        <Divider></Divider>
         {children}
       </div>
     </>

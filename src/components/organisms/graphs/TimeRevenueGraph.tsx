@@ -1,5 +1,5 @@
 import { HistogramLine } from "@atoms/graphs/histograms/HistogramLine";
-import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
+import { BarChartSkeleton } from "@atoms/skeletons/BarChartSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";
@@ -25,14 +25,18 @@ export const TimeRevenueGraph: FC = () => {
 
   return (
     <div>
-      <DefaultTitle>{t("time_revenue")}</DefaultTitle>
-      <DefaultSkeleton isLoaded={isFetched}>
+      <DefaultTitle className="text-2xl font-bold">
+        {t("time_revenue")}
+      </DefaultTitle>
+      {isFetched ? (
         <HistogramLine
           xAsisLabel={xAsisLabel}
           lineData={lineData}
           data={revenue}
         />
-      </DefaultSkeleton>
+      ) : (
+        <BarChartSkeleton isLoaded={false}></BarChartSkeleton>
+      )}
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
+import { DefaultSkeleton } from "@atoms/skeletons/DefaultSkeleton";
 import { DefaultTable } from "@atoms/table/DefaultTable";
 import DefaultParagraph from "@atoms/text/DefaultParagraph";
 import { createColumnHelper } from "@tanstack/react-table";
 import { DataContext } from "contexts/context";
-import { DataTableEntryBase } from "models/DataType";
+import { DataTableEntryBase } from "models/data/DataType";
 import { FC, useContext, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { formatDate } from "utils/dateFormatter";

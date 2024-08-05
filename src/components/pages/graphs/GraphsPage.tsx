@@ -10,18 +10,18 @@ export const GraphsPage: FC = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center text-4xl font-bold">
+      <div className="flex justify-center items-center text-4xl font-bold pb-12">
         <DefaultTitle>{t("graphsTitle")}</DefaultTitle>
       </div>
       <div className="flex items-center justify-center">
         <div className="w-1/2">
-          <TimeMarginPercGraph></TimeMarginPercGraph>
+          <TimeMarginPercGraph />
         </div>
         <div className="w-1/2">
-          <TimeRevenueGraph></TimeRevenueGraph>
+          <TimeRevenueGraph />
         </div>
       </div>
-      <TimeOrderCountGraph></TimeOrderCountGraph>
+      <TimeOrderCountGraph />
     </div>
   );
 };

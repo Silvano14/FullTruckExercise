@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import json1 from "./json1.json";
 import json2 from "./json2.json";
-import { DataModelBase } from "models/DataType";
+import { DataModelBase } from "models/data/DataType";
 
 export type Props = {
   aggregateBy: "day" | "week" | "month";

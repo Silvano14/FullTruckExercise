@@ -2,7 +2,7 @@ import { DefaultSelect } from "@atoms/select/DefaultSelect";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { KpiCard } from "@molecules/kpi/KpiCard";
 import { Accordion, AccordionItem, Input } from "@nextui-org/react";
-import { DataModelBase, KPIsBase } from "models/DataType";
+import { DataModelBase, KPIsBase } from "models/data/DataType";
 import { FC, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 

@@ -1,6 +1,8 @@
 import ReactEcharts from "echarts-for-react";
+import { ParamsLabelFormatter } from "models/graphTypes";
 import { FC, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { formatToTwoDecimalPlaces } from "utils/numberFormatter";
 
 type HistogramType = {
   xAsisLabel: string[];
@@ -14,29 +16,9 @@ export const Histogram: FC<HistogramType> = ({
   const { t } = useTranslation();
   const options = useMemo(
     () => ({
-      grid: { top: 20, right: 40, bottom: 20, left: 40 },
-      yAxis: {
-        type: "value",
-      },
-      tooltip: {
-        trigger: "axis",
-        axisPointer: {
-          type: "cross",
-          crossStyle: {
-            color: "#999",
-          },
-        },
-      },
+      tooltip: {},
       legend: {
-        data: [t("revenue"), t("margin_abs")],
-      },
-      toolbox: {
-        feature: {
-          dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ["line", "bar"] },
-          restore: { show: true },
-          saveAsImage: { show: true },
-        },
+        data: [t("margin_perc")],
       },
       xAxis: [
         {
@@ -47,11 +29,21 @@ export const Histogram: FC<HistogramType> = ({
           },
         },
       ],
+      yAxis: {
+        type: "value",
+      },
       series: [
         {
+          name: t("margin_perc"),
           data: data,
           type: "bar",
           smooth: true,
+          label: {
+            show: true,
+            formatter: (val: ParamsLabelFormatter): string => {
+              return formatToTwoDecimalPlaces(val.value as number) + " %";
+            },
+          },
         },
       ],
     }),

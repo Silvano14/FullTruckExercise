@@ -1,5 +1,5 @@
 import initialData from "components/initialDatas/initialData";
-import { DataModelBase } from "models/DataType";
+import { DataModelBase } from "models/data/DataType";
 import { createContext, Dispatch, SetStateAction } from "react";
 
 type DataContextType = {

@@ -6,8 +6,12 @@
 export const formatToTwoDecimalPlaces = (value: number): string => {
   const val = value.toFixed(2);
   if (val === "0.00") {
-    return value.toFixed(3);
+    const valFixed = value.toFixed(3);
+
+    if (valFixed === "0.000") {
+      return val;
+    }
   }
 
-  return value.toFixed(2);
+  return val;
 };

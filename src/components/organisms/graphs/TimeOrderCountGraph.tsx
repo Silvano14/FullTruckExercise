@@ -2,7 +2,7 @@ import {
   DataArray,
   HistogramScore,
 } from "@atoms/graphs/histograms/HistogramScore";
-import { DefaultSkeleton } from "@atoms/table/DefaultSkeleton";
+import { BarChartVerticalSkeleton } from "@atoms/skeletons/BarChartVerticalSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";
@@ -25,10 +25,14 @@ export const TimeOrderCountGraph: FC = () => {
 
   return (
     <div>
-      <DefaultTitle>{t("time_order_count")}</DefaultTitle>
-      <DefaultSkeleton isLoaded={isFetched}>
+      <DefaultTitle className="text-2xl font-bold">
+        {t("time_order_count")}
+      </DefaultTitle>
+      {isFetched ? (
         <HistogramScore source={source} />
-      </DefaultSkeleton>
+      ) : (
+        <BarChartVerticalSkeleton />
+      )}
     </div>
   );
 };

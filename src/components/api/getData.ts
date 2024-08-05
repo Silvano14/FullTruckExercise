@@ -1,5 +1,5 @@
 import { Props } from "hook/useStatistics";
-import { DataModelBase } from "models/DataType";
+import { DataModelBase } from "models/data/DataType";
 
 const payload = {
   aggregateBy: "day" as const,

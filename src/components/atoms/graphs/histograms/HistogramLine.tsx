@@ -1,4 +1,5 @@
 import ReactEcharts from "echarts-for-react";
+import { ParamsLabelFormatter } from "models/graphTypes";
 import { FC, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -65,6 +66,15 @@ export const HistogramLine: FC<HistogramType> = ({
           tooltip: {
             valueFormatter: function (value: number): string {
               return value + " €";
+            },
+          },
+          label: {
+            show: true,
+            formatter: (val: ParamsLabelFormatter): string => {
+              if (typeof val.value === "number") {
+                return val.value + " €";
+              }
+              return typeof val.value === "string" ? val.value : "-";
             },
           },
           data: data,
