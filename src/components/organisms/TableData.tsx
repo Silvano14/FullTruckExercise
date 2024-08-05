@@ -1,4 +1,4 @@
-import { DefaultSkeleton } from "@atoms/skeletons/DefaultSkeleton";
+import { DefaultSkeleton } from "@atoms/skeleton/DefaultSkeleton";
 import { DefaultTable } from "@atoms/table/DefaultTable";
 import DefaultParagraph from "@atoms/text/DefaultParagraph";
 import { createColumnHelper } from "@tanstack/react-table";

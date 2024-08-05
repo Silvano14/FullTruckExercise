@@ -1,5 +1,5 @@
 import { HistogramLine } from "@atoms/graphs/histograms/HistogramLine";
-import { BarChartSkeleton } from "@atoms/skeletons/BarChartSkeleton";
+import { BarChartSkeleton } from "@molecules/skeleton/BarChartSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";

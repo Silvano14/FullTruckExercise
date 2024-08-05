@@ -1,5 +1,6 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import { ChangeEventHandler } from "react";
+import { useTranslation } from "react-i18next";
 
 type DefaultSelectProps = {
   label?: string;
@@ -14,10 +15,11 @@ export const DefaultSelect: React.FC<DefaultSelectProps> = ({
   selectedKeys,
   onChange,
 }) => {
+  const { t } = useTranslation();
   return (
     <Select label={label} selectedKeys={selectedKeys} onChange={onChange}>
       {items.map((val) => (
-        <SelectItem textValue={val.toString()} key={val}>
+        <SelectItem textValue={t(val.toString())} key={val}>
           {val}
         </SelectItem>
       ))}

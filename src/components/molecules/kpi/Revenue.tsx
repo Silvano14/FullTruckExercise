@@ -13,14 +13,17 @@ type KpiCardProps = {
 export const Revenue: FC<KpiCardProps> = ({ data }) => {
   return (
     <>
-      <DefaultTitle className="text-lg font-bold" level={2}>
-        {t("revenue")}
-      </DefaultTitle>
+      <div className="flex justify-between items-center">
+        <DefaultTitle className="text-lg font-bold" level={2}>
+          {t("revenue")}
+        </DefaultTitle>
+        <DefaultParagraph>€</DefaultParagraph>
+      </div>
       <Divider />
 
       <div className="flex justify-between items-center">
         <DefaultTitle className="text-lg font-bold" level={2}>
-          {t("totals")}
+          {t("total")}
         </DefaultTitle>
         <DefaultParagraph className="text-lg font-bold">
           {data.revenue}
@@ -33,9 +36,8 @@ export const Revenue: FC<KpiCardProps> = ({ data }) => {
           {formatToTwoDecimalPlaces(data.revenue_per_order)}
         </DefaultParagraph>
       </div>
-
       <div className="flex justify-between items-center">
-        <DefaultParagraph>{t("perc_on_tot") + ":"}</DefaultParagraph>
+        <DefaultParagraph>{t("abs_perc_on_tot") + ":"}</DefaultParagraph>
         <DefaultParagraph title={data.revenue_perc_on_tot + ""}>
           {formatToTwoDecimalPlaces(data.revenue_perc_on_tot) + "%"}
         </DefaultParagraph>

@@ -9,8 +9,8 @@ export const GraphsPage: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div>
-      <div className="flex justify-center items-center text-4xl font-bold pb-12">
+    <>
+      <div className="flex justify-center items-center text-4xl font-bold py-4">
         <DefaultTitle>{t("graphsTitle")}</DefaultTitle>
       </div>
       <div className="flex items-center justify-center">
@@ -22,6 +22,6 @@ export const GraphsPage: FC = () => {
         </div>
       </div>
       <TimeOrderCountGraph />
-    </div>
+    </>
   );
 };

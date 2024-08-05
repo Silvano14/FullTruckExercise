@@ -2,7 +2,7 @@ import {
   DataArray,
   HistogramScore,
 } from "@atoms/graphs/histograms/HistogramScore";
-import { BarChartVerticalSkeleton } from "@atoms/skeletons/BarChartVerticalSkeleton";
+import { BarChartVerticalSkeleton } from "@molecules/skeleton/BarChartVerticalSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";

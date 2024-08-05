@@ -20,7 +20,7 @@ export const Order: FC<KpiCardProps> = ({ data }) => {
 
       <div className="flex justify-between items-center">
         <DefaultTitle className="text-lg font-bold" level={2}>
-          {t("totals")}
+          {t("total")}
         </DefaultTitle>
         <DefaultParagraph className="text-lg font-bold">
           {data.order_count}
@@ -28,7 +28,7 @@ export const Order: FC<KpiCardProps> = ({ data }) => {
       </div>
 
       <div className="flex justify-between items-center">
-        <DefaultParagraph>{t("perc_on_tot") + ":"}</DefaultParagraph>
+        <DefaultParagraph>{t("abs_perc_on_tot") + ":"}</DefaultParagraph>
         <DefaultParagraph title={data.revenue_perc_on_tot + ""}>
           {formatToTwoDecimalPlaces(data.order_count_perc_on_tot) + "%"}
         </DefaultParagraph>

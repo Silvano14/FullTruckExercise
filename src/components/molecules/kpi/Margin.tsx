@@ -14,13 +14,13 @@ export const Margin: FC<KpiCardProps> = ({ data }) => {
   return (
     <>
       <DefaultTitle className="text-lg font-bold" level={2}>
-        {t("margin")}
+        {t("margins_abs")}
       </DefaultTitle>
       <Divider />
 
       <div className="flex justify-between items-center">
         <DefaultTitle className="text-lg font-bold" level={2}>
-          {t("abs") + ":"}
+          {t("total") + ":"}
         </DefaultTitle>
         <DefaultParagraph
           title={data.margin_abs + ""}
@@ -45,7 +45,7 @@ export const Margin: FC<KpiCardProps> = ({ data }) => {
       </div>
 
       <div className="flex justify-between items-center">
-        <DefaultParagraph>{t("perc") + ":"}</DefaultParagraph>
+        <DefaultParagraph>{t("margin_perc") + ":"}</DefaultParagraph>
         <DefaultParagraph title={data.margin_perc + ""}>
           {formatToTwoDecimalPlaces(data.margin_perc) + "%"}
         </DefaultParagraph>

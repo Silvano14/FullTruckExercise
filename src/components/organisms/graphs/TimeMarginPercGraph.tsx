@@ -1,7 +1,6 @@
 import { Histogram } from "@atoms/graphs/histograms/Histogram";
-import { BarChartSkeleton } from "@atoms/skeletons/BarChartSkeleton";
-import { DefaultSkeleton } from "@atoms/skeletons/DefaultSkeleton";
 import DefaultTitle from "@atoms/text/DefaultTitle";
+import { BarChartSkeleton } from "@molecules/skeleton/BarChartSkeleton";
 import { DataContext } from "contexts/context";
 import { FC, useContext, useMemo } from "react";
 import { useTranslation } from "react-i18next";
