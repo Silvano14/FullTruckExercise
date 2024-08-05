@@ -3,6 +3,7 @@ export enum Routes {
   data = "/data",
   graphs = "/graphs",
   kpis = "/kpis",
+  scalars = "/scalars",
 }
 
 export const getValuesRoutes = (): string[] => {

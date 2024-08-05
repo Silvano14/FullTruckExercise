@@ -3,16 +3,15 @@ import { MarginFilters } from "@molecules/kpi/filtersKpi/MarginFilters";
 import { OrderFilters } from "@molecules/kpi/filtersKpi/OrderFilters";
 import { RevenueFilters } from "@molecules/kpi/filtersKpi/RevenueFilters";
 import { KpiCard } from "@molecules/kpi/KpiCard";
+import { CardSkeleton } from "@molecules/skeleton/CardSkeleton";
 import { Accordion, AccordionItem } from "@nextui-org/react";
-import { DataModelBase, KPIBase, KPIsBase } from "models/data/DataType";
-import { FC, useMemo, useState } from "react";
+import { DataContext } from "contexts/context";
+import { KPIBase, KPIsBase } from "models/data/DataType";
+import { FC, useContext, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-type KpiProps = {
-  data: DataModelBase;
-};
-
-export const Kpi: FC<KpiProps> = ({ data }) => {
+export const Kpi: FC = () => {
+  const { data, isFetched } = useContext(DataContext);
   const { t } = useTranslation();
   const [kpiType, setKpiType] = useState<keyof KPIsBase>("carrier");
   const [revenuePrice, setRevenuePrice] = useState<number | null>(null);
@@ -122,7 +121,7 @@ export const Kpi: FC<KpiProps> = ({ data }) => {
         </Accordion>
       </div>
       <div className="flex flex-wrap gap-10 pb-4 justify-evenly">
-        {kpiCards}
+        {isFetched ? kpiCards : <CardSkeleton />}
       </div>
     </>
   );
