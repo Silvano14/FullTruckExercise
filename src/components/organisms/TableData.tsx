@@ -11,6 +11,7 @@ import { formatToTwoDecimalPlaces } from "utils/numberFormatter";
 
 const columnHelper = createColumnHelper<DataTableEntryBase>();
 
+const headerStyle = "truncate";
 export const TableData: FC = () => {
   const { t } = useTranslation();
   const { data, isFetched } = useContext(DataContext);
@@ -24,7 +25,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
@@ -37,7 +38,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
@@ -50,7 +51,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
@@ -63,7 +64,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: () => (
-          <DefaultParagraph className="truncate" title={t("assigned_count")}>
+          <DefaultParagraph className={headerStyle} title={t("assigned_count")}>
             {t("assigned_count")}
           </DefaultParagraph>
         ),
@@ -76,11 +77,10 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
-        // filterFn: "includesString",
         meta: { filterVariant: "range" },
       }),
       columnHelper.accessor("margin_abs_per_order", {
@@ -91,7 +91,7 @@ export const TableData: FC = () => {
         ),
         header: () => (
           <DefaultParagraph
-            className="truncate"
+            className={headerStyle}
             title={t("margin_abs_per_order")}
           >
             {t("margin_abs_per_order")}
@@ -106,7 +106,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: () => (
-          <DefaultParagraph className="truncate" title={t("margin_perc")}>
+          <DefaultParagraph className={headerStyle} title={t("margin_perc")}>
             {t("margin_perc")}
           </DefaultParagraph>
         ),
@@ -119,7 +119,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: () => (
-          <DefaultParagraph className="truncate" title={t("new_carriers")}>
+          <DefaultParagraph className={headerStyle} title={t("new_carriers")}>
             {t("new_carriers")}
           </DefaultParagraph>
         ),
@@ -132,7 +132,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: () => (
-          <DefaultParagraph className="truncate" title={t("new_clients")}>
+          <DefaultParagraph className={headerStyle} title={t("new_clients")}>
             {t("new_clients")}
           </DefaultParagraph>
         ),
@@ -145,7 +145,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
@@ -158,7 +158,7 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
@@ -171,11 +171,11 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
-        filterFn: "includesString",
+        meta: { filterVariant: "range" },
       }),
       columnHelper.accessor("revenue_per_order", {
         cell: (info) => (
@@ -184,11 +184,11 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
-        filterFn: "includesString",
+        meta: { filterVariant: "range" },
       }),
       columnHelper.accessor("revenue", {
         cell: (info) => (
@@ -197,11 +197,11 @@ export const TableData: FC = () => {
           </DefaultSkeleton>
         ),
         header: (info) => (
-          <DefaultParagraph className="truncate" title={t(info.column.id)}>
+          <DefaultParagraph className={headerStyle} title={t(info.column.id)}>
             {t(info.column.id)}
           </DefaultParagraph>
         ),
-        filterFn: "includesString",
+        meta: { filterVariant: "range" },
       }),
     ],
     [isFetched, t]

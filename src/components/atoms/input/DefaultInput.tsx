@@ -3,6 +3,7 @@ import React, { FC, ReactNode } from "react";
 
 export const DefaultInput: FC<{
   className?: string;
+  endContent?: ReactNode;
   placeholder: string;
   type: string;
   value?: string | number;

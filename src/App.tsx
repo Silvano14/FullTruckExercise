@@ -12,6 +12,7 @@ import { FC, useMemo, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import WelcomePage from "./components/pages/welcome/WelcomePage";
 import { Routes } from "./shared/routes/routes";
+import { ScalarsPage } from "@pages/scalars/ScalarsPage";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
     element: (
       <PageTemplate>
         <KpiPage />
+      </PageTemplate>
+    ),
+  },
+  {
+    path: Routes.scalars,
+    element: (
+      <PageTemplate>
+        <ScalarsPage />
       </PageTemplate>
     ),
   },

@@ -35,17 +35,17 @@ export const Kpi: FC = () => {
       .filter(([, v]) => isEqualToValue(v, "revenue", revenuePrice))
       .filter(([, v]) => isEqualToValue(v, "revenue_per_order", revenueOrder))
       .filter(([, v]) =>
-        isEqualToValue(v, "revenue_perc_on_tot", revenuePercentage)
+        startWithValue(v, "revenue_perc_on_tot", revenuePercentage)
       )
       .filter(([, v]) => isEqualToValue(v, "margin_abs", marginTotal))
       .filter(([, v]) => isEqualToValue(v, "margin_abs_per_order", marginOrder))
       .filter(([, v]) =>
-        isEqualToValue(v, "margin_abs_perc_on_tot", marginPercentageOnTot)
+        startWithValue(v, "margin_abs_perc_on_tot", marginPercentageOnTot)
       )
-      .filter(([, v]) => isEqualToValue(v, "margin_perc", marginPercentage))
+      .filter(([, v]) => startWithValue(v, "margin_perc", marginPercentage))
       .filter(([, v]) => isEqualToValue(v, "order_count", orderTotal))
       .filter(([, v]) =>
-        isEqualToValue(v, "order_count_perc_on_tot", orderPercentage)
+        startWithValue(v, "order_count_perc_on_tot", orderPercentage)
       )
       .map(([k, v]) => {
         return <KpiCard key={k} data={v} />;
@@ -67,12 +67,7 @@ export const Kpi: FC = () => {
   return (
     <>
       <div className="flex justify-center w-full">
-        <Accordion
-          defaultExpandedKeys={["1"]}
-          variant="shadow"
-          fullWidth={false}
-          style={{ width: "50%" }}
-        >
+        <Accordion variant="shadow" fullWidth={false} style={{ width: "50%" }}>
           <AccordionItem
             subtitle={t("expand_filter")}
             key="1"
@@ -81,13 +76,15 @@ export const Kpi: FC = () => {
             <div className="flex gap-4 ">
               <div className="flex flex-1 flex-col gap-2">
                 <DefaultSelect
-                  selectedKeys={[kpiType]}
+                  selectedKeys={[t(kpiType)]}
                   label={t("selectKpiType")}
-                  items={["carrier", "client"]}
+                  items={[t("carrier"), t("client")]}
                   onChange={(e) => {
                     const value = e.target.value;
-                    if (value === "carrier" || value === "client") {
-                      setKpiType(value);
+                    if (value === t("carrier")) {
+                      setKpiType("carrier");
+                    } else if (value === t("client")) {
+                      setKpiType("client");
                     }
                   }}
                 />
@@ -137,6 +134,22 @@ const isEqualToValue = (
   }
 
   if (v[field] === target) {
+    return true;
+  }
+
+  return false;
+};
+
+const startWithValue = (
+  v: KPIBase,
+  field: keyof KPIBase,
+  target: number | null
+): boolean => {
+  if (target === null) {
+    return true;
+  }
+
+  if (v[field].toString().startsWith(target.toString())) {
     return true;
   }
 

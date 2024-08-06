@@ -63,7 +63,7 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
   return (
     <>
       <Spacer y={4} />
-      <div className="flex flex-col gap-4 px-8">
+      <div className="flex flex-col gap-4 px-8 h-[calc(100vh-84px)]">
         <div className="flex justify-between items-center">
           {pathname !== Routes.homepage ? (
             <DefaultButton
@@ -85,13 +85,17 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
               {t("reloadData")}
             </DefaultButton>
           )}
-          <DefaultButton
-            color="primary"
-            onClick={() => updatePathname(getRoutes.forward)}
-            endContent={<IconArrowRight />}
-          >
-            {t("forward")}
-          </DefaultButton>
+          {pathname !== Routes.scalars ? (
+            <DefaultButton
+              color="primary"
+              onClick={() => updatePathname(getRoutes.forward)}
+              endContent={<IconArrowRight />}
+            >
+              {t("forward")}
+            </DefaultButton>
+          ) : (
+            <div />
+          )}
         </div>
         <Divider></Divider>
         {children}

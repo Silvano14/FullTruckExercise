@@ -69,9 +69,7 @@ export const DefaultTable = <TData,>({
                     }[header.column.getIsSorted() as string] ?? null}
                   </div>
                   {header.column.getCanFilter() ? (
-                    <div>
-                      <Filter column={header.column} />
-                    </div>
+                    <Filter column={header.column} />
                   ) : null}
                 </th>
               ))}
@@ -80,12 +78,12 @@ export const DefaultTable = <TData,>({
         </thead>
       </table>
       <div className="flex-1 overflow-y-auto">
-        <table className=" table-fixed w-full divide-y divide-gray-200">
+        <table className=" table-fixed w-full divide-y divide-gray-200 dark:divide-neutral-700">
           <tbody>
             {table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="odd:bg-white even:bg-gray-100 text-center"
+                className="odd:bg-white even:bg-gray-100 dark:odd:bg-neutral-900 dark:even:bg-neutral-800 text-center"
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
