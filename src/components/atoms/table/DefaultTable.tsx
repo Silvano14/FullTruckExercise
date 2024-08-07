@@ -18,8 +18,6 @@ interface TableProps<TData> {
   columns: ColumnDef<TData, any>[];
 }
 
-export const defaultPageSize = 5;
-
 export const DefaultTable = <TData,>({
   data = [],
   columns,

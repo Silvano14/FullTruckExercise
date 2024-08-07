@@ -1,4 +1,4 @@
-import DefaultTitle from "@atoms/text/DefaultTitle";
+import { PageTitle } from "@atoms/text/PageTitle";
 import { TimeMarginPercGraph } from "@organisms/graphs/TimeMarginPercGraph";
 import { TimeOrderCountGraph } from "@organisms/graphs/TimeOrderCountGraph";
 import { TimeRevenueGraph } from "@organisms/graphs/TimeRevenueGraph";
@@ -11,7 +11,7 @@ export const GraphsPage: FC = () => {
   return (
     <>
       <div className="flex justify-center items-center text-4xl font-bold py-4">
-        <DefaultTitle>{t("graphsTitle")}</DefaultTitle>
+        <PageTitle>{t("kpiTitle")}</PageTitle>
       </div>
       <div className="flex items-center justify-center">
         <div className="w-1/2">

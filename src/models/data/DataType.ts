@@ -27,7 +27,7 @@ type TimeRevenueType = {
   data: { date: string; revenue: number; margin_abs: number }[];
 };
 
-export interface HistogramDataEntryBase {
+interface HistogramDataEntryBase {
   time_margin_perc: TimeMarginPercType;
   time_order_count: TimeOrderCountType;
   time_revenue: TimeRevenueType;
@@ -51,7 +51,7 @@ export interface KPIsBase {
   client: Record<string, KPIBase>;
 }
 
-export interface ScalarsBase {
+interface ScalarsBase {
   active_carriers: number;
   active_clients: number;
   average_margin_perc: number;

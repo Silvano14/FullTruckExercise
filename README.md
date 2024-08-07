@@ -22,6 +22,7 @@ Follow these steps to get the project up and running on your local machine:
    ```
 
 2. **Run the project**:
+
    ```sh
    pnpm run dev
    ```
@@ -33,3 +34,15 @@ This project includes unit tests to ensure the functionality of the utility func
 ```sh
 pnpm run test
 ```
+
+## Code Base Maintenance with Knip
+
+This project uses [Knip](https://knip.dev/overview/getting-started), a powerful tool to keep the code base clean and organized by identifying unused files, dependencies, and exports. To run Knip and clean up the code base, use the following command:
+
+```sh
+pnpm run knip
+```
+
+## Atomic Design Methodology
+
+The project follows the Atomic Design methodology, which structures components into five distinct levels: Atoms, Molecules, Organisms, Templates, and Pages. This approach promotes a systematic and hierarchical way to build and maintain the UI. For more information on Atomic Design, visit [Atomic Design by Brad Frost](https://atomicdesign.bradfrost.com/chapter-2/).

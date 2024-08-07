@@ -26,12 +26,20 @@ const applyFilters = (
   }
   return data;
 };
-
+/**
+ * Custom hook for fetching statistics data with optional filters.
+ * @returns An object containing the fetchStatistics function.
+ */
 const useStatistics = (): {
   fetchStatistics: (obj: Filters | null) => Promise<DataModelBase>;
 } => {
   const toggleRef = useRef(false);
 
+  /**
+   * Fetches statistics data based on provided filters.
+   * @param filters - Optional filters to apply to the data.
+   * @returns A promise that resolves with the filtered data.
+   */
   const fetchStatistics = (filters: Filters | null): Promise<DataModelBase> => {
     toggleRef.current = !toggleRef.current;
     return new Promise((resolve) => {
