@@ -1,9 +1,11 @@
-import { useMemo, useRef, useState } from "react";
+import dayjs from "dayjs";
+import { DataModelBase } from "models/data/DataType";
+import { useRef } from "react";
+import { applyDateRangeFilter } from "utils/filters/filterByDates";
 import json1 from "./json1.json";
 import json2 from "./json2.json";
-import { DataModelBase } from "models/data/DataType";
 
-export type Props = {
+export type Filters = {
   aggregateBy: "day" | "week" | "month";
   timeTarget: "pickup_date" | "created_at";
   startDate: string | null;
@@ -11,30 +13,42 @@ export type Props = {
 };
 
 /**
- * Custom hook for fetching statistics data.
- * @returns An object containing the `fetchStatistics` function.
+ * Applies filters and aggregation to the data.
+ * @param data - The original data model.
+ * @param filters - The filters to apply.
+ * @returns The filtered and aggregated data.
  */
+const applyFilters = (
+  data: DataModelBase,
+  filters: Filters | null
+): DataModelBase => {
+  if (filters) {
+    return applyDateRangeFilter(data, filters.startDate, filters.endDate);
+  }
+  return data;
+};
+
 const useStatistics = (): {
-  fetchStatistics: (obj: Props) => Promise<DataModelBase>;
+  fetchStatistics: (obj: Filters | null) => Promise<DataModelBase>;
 } => {
   const toggleRef = useRef(false);
 
-  /**
-   * Fetches statistics data based on the provided props.
-   * This function has a delay to simulate a slow network call.
-   * @param props - The props object containing the necessary parameters for fetching statistics.
-   * @returns A promise that resolves to the fetched statistics data.
-   */
-
-  const fetchStatistics = (_: Props): Promise<DataModelBase> => {
+  const fetchStatistics = (filters: Filters | null): Promise<DataModelBase> => {
     toggleRef.current = !toggleRef.current;
     return new Promise((resolve) => {
       const delay = Math.random() * 3000 + 500;
       setTimeout(() => {
-        toggleRef.current ? resolve(json1) : resolve(json2);
+        const data = toggleRef.current ? json1 : json2;
+        let filteredData = data;
+        if (filters !== null) {
+          // @ts-expect-error ignore index_by
+          filteredData = applyFilters(data, filters);
+        }
+        resolve(filteredData);
       }, delay);
     });
   };
+
   return { fetchStatistics };
 };
 

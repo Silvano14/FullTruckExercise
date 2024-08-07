@@ -43,3 +43,23 @@ export const formatDate = (
 
   return `${day.toString().padStart(2, "0")} ${month} ${year}`;
 };
+
+export const getMonthByDate = (date: string): string => {
+  const _date = new Date(date);
+
+  return monthNames[_date.getMonth()];
+};
+
+export const getDayByDate = (date: string): number => {
+  const _date = new Date(date);
+
+  return _date.getDay();
+};
+
+export const convertDateToISO = (dateString: string): string => {
+  const [day, month, year] = dateString.split("-");
+
+  const isoDate = `${year}-${month}-${day}T00:00:00`;
+
+  return isoDate;
+};

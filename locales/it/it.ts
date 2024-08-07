@@ -20,7 +20,8 @@ export default {
   back: "Indietro",
   forward: "Avanti",
   welcome: "Benvenuto",
-  explain_scope: "Questo programma è nato per entrare nel mondo di FullTruck",
+  explain_scope:
+    "Questo programma è nato per provare a far parte nel mondo di FullTruck",
   explain_code:
     "Per avere ulteriori dettagli su come far partire il progetto, o guardare il codice sorgente, puoi navigarlo liberamente utilizzando questo link: ",
   start_navigation:
@@ -68,4 +69,9 @@ export default {
   average_margin_perc: "Media margine",
   avg_order_margin_abs: "Media margine assoluto",
   avg_order_revenue: "Media guadagno ordini",
+  filters: "Filtri",
+  apply_filters: "Applica filtri",
+  selectDuration: "Seleziona la durata",
+  applyFilters: "Applica filtri",
+  reset: "Reset",
 };

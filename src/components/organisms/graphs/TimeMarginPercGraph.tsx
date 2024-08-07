@@ -30,7 +30,7 @@ export const TimeMarginPercGraph: FC = () => {
       {isFetched ? (
         <Histogram xAsisLabel={date} data={dataHistogram}></Histogram>
       ) : (
-        <BarChartSkeleton isLoaded={false}></BarChartSkeleton>
+        <BarChartSkeleton isLoaded={false} />
       )}
     </>
   );

@@ -1,12 +1,21 @@
 import { DefaultButton } from "@atoms/buttons/DefaultButton";
-import { Divider, Spacer } from "@nextui-org/react";
+import { DefaultModal } from "@atoms/modal/DefaultModal";
+import GlobalFilters from "@molecules/globalFilters/GlobalFilters";
+import { Divider, Spacer, useDisclosure } from "@nextui-org/react";
 import { getValuesRoutes, Routes } from "@shared/routes/routes";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { getData } from "components/api/getData";
 import { DataContext } from "contexts/context";
-import useStatistics from "hook/useStatistics";
+import useStatistics, { Filters } from "hook/useStatistics";
 import { DataModelBase } from "models/data/DataType";
-import { FC, ReactNode, useContext, useEffect, useMemo } from "react";
+import {
+  FC,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -20,21 +29,28 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
   const { setData, isFetched, setIsFetched } = useContext(DataContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const [filters, setFilters] = useState<Filters | null>(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const loadData = (): void => {
-    setIsFetched(false);
-    getData(fetchStatistics)
-      .then((res: unknown) => setData(res as DataModelBase))
-      .finally(() => setIsFetched(true));
-  };
+  const loadData = useCallback(
+    (filters: Filters | null): void => {
+      setIsFetched(false);
+      fetchStatistics(filters)
+        .then((res: unknown) => setData(res as DataModelBase))
+        .catch((err) => console.error("Error while loading data: ", err))
+        .finally(() => setIsFetched(true));
+    },
+    [fetchStatistics, setData, setIsFetched]
+  );
 
   useEffect(() => {
     if (
       pathname === Routes.data ||
       pathname === Routes.graphs ||
-      pathname === Routes.kpis
+      pathname === Routes.kpis ||
+      pathname === Routes.scalars
     ) {
-      loadData();
+      loadData(filters);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
@@ -76,15 +92,56 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
           ) : (
             <div />
           )}
-          {pathname !== Routes.homepage && (
-            <DefaultButton
-              color="warning"
-              isLoading={!isFetched}
-              onClick={loadData}
+          <div className="flex gap-2 items-center justify-center">
+            {pathname !== Routes.homepage && (
+              <DefaultButton
+                color="warning"
+                isLoading={!isFetched}
+                onClick={() => loadData(filters as Filters)}
+              >
+                {t("reloadData")}
+              </DefaultButton>
+            )}
+            <DefaultModal
+              isOpen={isOpen}
+              onOpen={onOpen}
+              onClose={onClose}
+              buttonTitle={t("filters")}
+              modalTitle={"Filtra"}
             >
-              {t("reloadData")}
-            </DefaultButton>
-          )}
+              <GlobalFilters
+                onFilterChange={function ({ startDate, endDate }): void {
+                  let filters = {};
+                  if (startDate) {
+                    filters = {
+                      startDate: startDate
+                        .toDate(
+                          window.Intl.DateTimeFormat().resolvedOptions()
+                            .timeZone
+                        )
+                        .toLocaleString(),
+                      ...filters,
+                    };
+                  }
+
+                  if (endDate) {
+                    filters = {
+                      endDate: endDate
+                        .toDate(
+                          window.Intl.DateTimeFormat().resolvedOptions()
+                            .timeZone
+                        )
+                        .toLocaleString(),
+                      ...filters,
+                    };
+                  }
+                  setFilters(filters as Filters);
+                  loadData(filters as Filters);
+                  onClose();
+                }}
+              />
+            </DefaultModal>
+          </div>
           {pathname !== Routes.scalars ? (
             <DefaultButton
               color="primary"
