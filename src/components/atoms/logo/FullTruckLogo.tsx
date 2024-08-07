@@ -6,7 +6,7 @@ type Props = {
 };
 
 const FullTruckLogo: FC<Props> = () => {
-  return <img alt="The FullTruck logo" src={logo} width={200} />;
+  return <img className="bg-white p-2" alt="The FullTruck logo" src={logo} width={200} />;
 };
 
 export default FullTruckLogo;

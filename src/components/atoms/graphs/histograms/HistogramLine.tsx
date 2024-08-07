@@ -26,14 +26,6 @@ export const HistogramLine: FC<HistogramType> = ({
           },
         },
       },
-      toolbox: {
-        feature: {
-          dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ["line", "bar"] },
-          restore: { show: true },
-          saveAsImage: { show: true },
-        },
-      },
       legend: {
         data: [t("revenue"), t("margin_abs")],
       },
