@@ -44,18 +44,35 @@ export const formatDate = (
   return `${day.toString().padStart(2, "0")} ${month} ${year}`;
 };
 
+/**
+ * Retrieves the month name from a given date string.
+ *
+ * @param {string} date - The date string to extract the month from.
+ * @returns {string} - The name of the month corresponding to the given date.
+ */
 export const getMonthByDate = (date: string): string => {
   const _date = new Date(date);
 
   return monthNames[_date.getMonth()];
 };
 
+/**
+ * Returns the day of the week for a given date string.
+ *
+ * @param {string} date - The date string to be parsed.
+ * @returns {number} - The day of the week as a number (0 for Sunday, 1 for Monday, etc.).
+ */
 export const getDayByDate = (date: string): number => {
   const _date = new Date(date);
 
   return _date.getDay();
 };
 
+/**
+ * Converts a date string in the format "dd-mm-yyyy" to ISO format "yyyy-mm-ddT00:00:00".
+ * @param dateString - The date string to convert.
+ * @returns The date string converted to ISO format.
+ */
 export const convertDateToISO = (dateString: string): string => {
   const [day, month, year] = dateString.split("-");
 
