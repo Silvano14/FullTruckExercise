@@ -51,7 +51,5 @@ export const HistogramScore: FC<HistogramType> = ({ source = [] }) => {
     [source]
   );
 
-  return (
-    <ReactEcharts option={options}></ReactEcharts>
-  );
+  return <ReactEcharts option={options}></ReactEcharts>;
 };

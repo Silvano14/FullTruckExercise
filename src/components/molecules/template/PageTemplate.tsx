@@ -102,45 +102,49 @@ export const PageTemplate: FC<PageTemplateProps> = ({ children }) => {
                 {t("reloadData")}
               </DefaultButton>
             )}
-            <DefaultModal
-              isOpen={isOpen}
-              onOpen={onOpen}
-              onClose={onClose}
-              buttonTitle={t("filters")}
-              modalTitle={"Filtra"}
-            >
-              <GlobalFilters
-                onFilterChange={function ({ startDate, endDate }): void {
-                  let filters = {};
-                  if (startDate) {
-                    filters = {
-                      startDate: startDate
-                        .toDate(
-                          window.Intl.DateTimeFormat().resolvedOptions()
-                            .timeZone
-                        )
-                        .toLocaleString(),
-                      ...filters,
-                    };
-                  }
+            {pathname === Routes.data || pathname === Routes.graphs ? (
+              <DefaultModal
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onClose={onClose}
+                buttonTitle={t("filters")}
+                modalTitle={"Filtra"}
+              >
+                <GlobalFilters
+                  onFilterChange={function ({ startDate, endDate }): void {
+                    let filters = {};
+                    if (startDate) {
+                      filters = {
+                        startDate: startDate
+                          .toDate(
+                            window.Intl.DateTimeFormat().resolvedOptions()
+                              .timeZone
+                          )
+                          .toLocaleString(),
+                        ...filters,
+                      };
+                    }
 
-                  if (endDate) {
-                    filters = {
-                      endDate: endDate
-                        .toDate(
-                          window.Intl.DateTimeFormat().resolvedOptions()
-                            .timeZone
-                        )
-                        .toLocaleString(),
-                      ...filters,
-                    };
-                  }
-                  setFilters(filters as Filters);
-                  loadData(filters as Filters);
-                  onClose();
-                }}
-              />
-            </DefaultModal>
+                    if (endDate) {
+                      filters = {
+                        endDate: endDate
+                          .toDate(
+                            window.Intl.DateTimeFormat().resolvedOptions()
+                              .timeZone
+                          )
+                          .toLocaleString(),
+                        ...filters,
+                      };
+                    }
+                    setFilters(filters as Filters);
+                    loadData(filters as Filters);
+                    onClose();
+                  }}
+                />
+              </DefaultModal>
+            ) : (
+              <></>
+            )}
           </div>
           {pathname !== Routes.scalars ? (
             <DefaultButton

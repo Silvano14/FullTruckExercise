@@ -74,12 +74,6 @@ const ContentAvatar: React.FC<ContentAvatarProps> = ({ onClose }) => {
           </SelectItem>
         </Select>
       </div>
-      <Divider />
-      <div className="h-fit flex justify-between">
-        <DefaultButton color="danger" onClick={onClose}>
-          {t("logout")}
-        </DefaultButton>
-      </div>
     </div>
   );
 };

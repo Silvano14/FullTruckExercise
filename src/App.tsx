@@ -68,7 +68,7 @@ const App: FC = () => {
 
   return (
     <NextUIProvider>
-      <NextThemesProvider attribute="class" defaultTheme="dark">
+      <NextThemesProvider attribute="class" defaultTheme="light">
         <DataContext.Provider value={dataContext}>
           <GlobalFiltersContext.Provider value={filtersContext}>
             <Header></Header>

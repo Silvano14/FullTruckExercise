@@ -7,7 +7,9 @@ export const ScalarsPage: FC = () => {
   const { t } = useTranslation();
   return (
     <div className="flex items-center justify-center flex-col h-full">
-      <PageTitle>{t("scalarsTitle")}</PageTitle>
+      <div className="flex flex-col items-center py-4">
+        <PageTitle>{t("scalarsTitle")}</PageTitle>
+      </div>
       <div className="flex gap-4 h-full">
         <Scalars></Scalars>
       </div>

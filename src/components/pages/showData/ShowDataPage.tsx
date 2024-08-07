@@ -4,9 +4,11 @@ import { FC } from "react";
 
 export const ShowDataPage: FC = () => {
   return (
-    <div className="flex flex-col gap-8 items-center">
-      <PageTitle>tableDataTitle</PageTitle>
+    <>
+      <div className="flex flex-col items-center py-4">
+        <PageTitle>tableDataTitle</PageTitle>
+      </div>
       <TableData />
-    </div>
+    </>
   );
 };
